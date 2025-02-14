@@ -28,11 +28,12 @@ public class CANDriveSubsystem extends SubsystemBase {
     WPI_TalonSRX leftFollower = new WPI_TalonSRX(DriveConstants.LEFT_FOLLOWER_ID);
     WPI_TalonSRX rightLeader = new WPI_TalonSRX(DriveConstants.RIGHT_LEADER_ID);
     WPI_TalonSRX rightFollower = new WPI_TalonSRX(DriveConstants.RIGHT_FOLLOWER_ID);
-    MotorControllerGroup leftGroup = new MotorControllerGroup(leftLeader, leftFollower);
-    MotorControllerGroup rightGroup = new MotorControllerGroup(rightLeader, rightFollower);
+
+    leftFollower.follow(leftLeader);
+    rightFollower.follow(rightLeader);
 
     // set up differential drive class
-    drive = new DifferentialDrive(leftGroup, rightGroup);
+    drive = new DifferentialDrive(leftLeader, rightLeader);
 
     // Set can timeout. Because this project only sets parameters once on
     // construction, the timeout can be long without blocking robot operation. Code
