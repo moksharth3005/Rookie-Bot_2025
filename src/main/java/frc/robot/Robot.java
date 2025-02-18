@@ -118,7 +118,10 @@ public class Robot extends TimedRobot {
       m_canDriveSubsystem.driveArcade(leftStickX * 5310, rightStickY);
       if (m_controller.getRightBumperButton()){
         CoralShooter.m_Shooter.set(.2*12);
-      } else { 
+      } else if(m_controller.getLeftBumperButton()){
+        CoralShooter.m_Shooter.set(-0.2);
+      }
+      else { 
         CoralShooter.m_Shooter.set(0);
       }
     }

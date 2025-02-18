@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix6.*;
@@ -28,7 +29,13 @@ public class CANDriveSubsystem extends SubsystemBase {
     WPI_TalonSRX leftFollower = new WPI_TalonSRX(DriveConstants.LEFT_FOLLOWER_ID);
     WPI_TalonSRX rightLeader = new WPI_TalonSRX(DriveConstants.RIGHT_LEADER_ID);
     WPI_TalonSRX rightFollower = new WPI_TalonSRX(DriveConstants.RIGHT_FOLLOWER_ID);
-
+    rightLeader.setInverted(true);
+    rightFollower.setInverted(true);
+    rightFollower.setNeutralMode(NeutralMode.Brake);
+    rightLeader.setNeutralMode(NeutralMode.Brake);
+    leftFollower.setNeutralMode(NeutralMode.Brake);
+    leftLeader.setNeutralMode(NeutralMode.Brake);
+    
     leftFollower.follow(leftLeader);
     rightFollower.follow(rightLeader);
 
