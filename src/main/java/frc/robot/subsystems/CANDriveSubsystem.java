@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix6.*;
 import com.revrobotics.spark.SparkBase.PersistMode;
@@ -41,7 +42,10 @@ public class CANDriveSubsystem extends SubsystemBase {
 
     // set up differential drive class
     drive = new DifferentialDrive(leftLeader, rightLeader);
-
+    leftLeader.configPeakCurrentLimit(20);
+    leftFollower.configPeakCurrentLimit(20);
+    rightLeader.configPeakCurrentLimit(20);
+    rightFollower.configPeakCurrentLimit(20);
     // Set can timeout. Because this project only sets parameters once on
     // construction, the timeout can be long without blocking robot operation. Code
     // which sets or gets parameters during operation may need a shorter timeout.
@@ -82,6 +86,7 @@ public class CANDriveSubsystem extends SubsystemBase {
 
   // sets the speed of the drive motors
   public void driveArcade(double xSpeed, double zRotation) {
-    drive.arcadeDrive(xSpeed, zRotation);
+    double maxSpeed = 1.5; // Set the max speed constant
+    drive.arcadeDrive(xSpeed * maxSpeed, zRotation * maxSpeed);
   }
 }
