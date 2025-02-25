@@ -23,13 +23,13 @@ import frc.robot.Constants.DriveConstants;
 
 // Class to drive the robot over CAN
 public class CANDriveSubsystem extends SubsystemBase {
-  private final DifferentialDrive drive;
+  public WPI_TalonSRX leftLeader = new WPI_TalonSRX(DriveConstants.LEFT_LEADER_ID);
+  public WPI_TalonSRX leftFollower = new WPI_TalonSRX(DriveConstants.LEFT_FOLLOWER_ID);
+  public WPI_TalonSRX rightLeader = new WPI_TalonSRX(DriveConstants.RIGHT_LEADER_ID);
+  public WPI_TalonSRX rightFollower = new WPI_TalonSRX(DriveConstants.RIGHT_FOLLOWER_ID);
+  public final DifferentialDrive drive;
   public CANDriveSubsystem() {
     // create brushed motors for drive
-    WPI_TalonSRX leftLeader = new WPI_TalonSRX(DriveConstants.LEFT_LEADER_ID);
-    WPI_TalonSRX leftFollower = new WPI_TalonSRX(DriveConstants.LEFT_FOLLOWER_ID);
-    WPI_TalonSRX rightLeader = new WPI_TalonSRX(DriveConstants.RIGHT_LEADER_ID);
-    WPI_TalonSRX rightFollower = new WPI_TalonSRX(DriveConstants.RIGHT_FOLLOWER_ID);
     rightLeader.setInverted(true);
     rightFollower.setInverted(true);
     rightFollower.setNeutralMode(NeutralMode.Brake);
