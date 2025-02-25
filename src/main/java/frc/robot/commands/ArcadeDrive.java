@@ -33,9 +33,18 @@ public class ArcadeDrive extends Command {
     if (controller.getLeftY() == 0){
       if (controller.getRightX() > 0){
       driveTrain.leftLeader.set(controller.getRightX());
-      driveTrain.rightLeader.set(controller.getRightX());
-      } else if (controller.getrightX()){}
+      driveTrain.rightLeader.set(controller.getRightX() * -1);
+      } else if (controller.getRightX() < 0){
+        driveTrain.leftLeader.set(controller.getRightX() * -1);
+        driveTrain.rightLeader.set(controller.getRightX());
       }
+    } else if (controller.getRightX() == 0){
+      driveTrain.leftLeader.set(controller.getLeftY());
+      driveTrain.rightLeader.set(controller.getLeftY());
+    } else if (controller.getLeftY() > 0 && controller.getRightX() > 0){
+      double Ymed = controller.getLeftY()/0.4;
+      double Yfin = controller.getLeftY() - Ymed;
+      rightLeader.set(controller.getRightX() * -1);
     }
   }
 
