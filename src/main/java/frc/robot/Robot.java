@@ -113,7 +113,7 @@ public class Robot extends TimedRobot {
     /** This function is called periodically during operator control. */
     @Override
     public void teleopPeriodic() {
-      double leftStickX = m_controller.getLeftX();
+      /*double leftStickX = m_controller.getLeftX();
       double rightStickY = m_controller.getRightY();
       m_canDriveSubsystem.driveArcade(leftStickX * 5310, rightStickY);
       if (m_controller.getRightBumperButton()){
@@ -123,7 +123,7 @@ public class Robot extends TimedRobot {
       }
       else { 
         CoralShooter.m_Shooter.set(0);
-      }
+      }*/
     }
 
   @Override
