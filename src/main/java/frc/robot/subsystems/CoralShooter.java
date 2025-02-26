@@ -5,9 +5,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants.DriveConstants;
-import frc.robot.commands.DriveCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.ctre.phoenix.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class CoralShooter extends SubsystemBase {
