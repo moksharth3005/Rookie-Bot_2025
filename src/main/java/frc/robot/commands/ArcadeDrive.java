@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.CANDriveSubsystem;
@@ -12,11 +13,15 @@ import frc.robot.subsystems.CANDriveSubsystem;
 public class ArcadeDrive extends Command {
   private CANDriveSubsystem driveTrain = null;
   private XboxController controller = null;
+  private DutyCycleEncoder Encoder_Rightleader = null;
+  private DutyCycleEncoder Encoder_Leftleader = null;
 
   /** Creates a new ArcadeDrive. */
-  public ArcadeDrive(CANDriveSubsystem driveTrain, XboxController controller) {
+  public ArcadeDrive(CANDriveSubsystem driveTrain, XboxController controller, DutyCycleEncoder Encoder_Rightleader, DutyCycleEncoder Encoder_Leftleader) {
     this.driveTrain = driveTrain;
     this.controller = controller;
+    this.Encoder_Leftleader = Encoder_Leftleader;
+    this.Encoder_Rightleader = Encoder_Rightleader;
 
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -30,6 +35,8 @@ public class ArcadeDrive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    Encoder_Leftleader.get();
+    Encoder_Rightleader.get();
     if (controller.getLeftY() <= 0.04 && controller.getLeftY() >= -0.04){ //No y input
       driveTrain.leftLeader.set(controller.getRightX() >= 0.04 ? controller.getRightX() : 0);
       if (controller.getRightX() > 0.04){ // Going Left

@@ -50,7 +50,7 @@ public class RobotContainer {
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    driveSubsystem.setDefaultCommand(new ArcadeDrive(driveSubsystem, null));
+    driveSubsystem.setDefaultCommand(new ArcadeDrive(driveSubsystem, null, null, null));
 
     // Set up command bindings
     configureBindings();
