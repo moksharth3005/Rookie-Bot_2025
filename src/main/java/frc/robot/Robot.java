@@ -9,14 +9,9 @@ import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.subsystems.CANDriveSubsystem;
+//import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CoralShooter;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.XboxController.Button;
-import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.subsystems.CoralShooter;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to
@@ -31,8 +26,8 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
   public static XboxController m_controller = new XboxController(0);
-  private CANDriveSubsystem m_canDriveSubsystem = new CANDriveSubsystem();
-  private CoralShooter m_CoralShooter = new CoralShooter();
+  //private CANDriveSubsystem m_canDriveSubsystem = new CANDriveSubsystem();
+  //private CoralShooter m_CoralShooter = new CoralShooter();
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -115,7 +110,7 @@ public class Robot extends TimedRobot {
     public void teleopPeriodic() {
       /*double leftStickX = m_controller.getLeftX();
       double rightStickY = m_controller.getRightY();
-      m_canDriveSubsystem.driveArcade(leftStickX * 5310, rightStickY);
+      m_canDriveSubsystem.driveArcade(leftStickX * 5310, rightStickY);*/
       if (m_controller.getRightBumperButton()){
         CoralShooter.m_Shooter.set(.2*12);
       } else if(m_controller.getLeftBumperButton()){
@@ -123,7 +118,7 @@ public class Robot extends TimedRobot {
       }
       else { 
         CoralShooter.m_Shooter.set(0);
-      }*/
+      }
     }
 
   @Override

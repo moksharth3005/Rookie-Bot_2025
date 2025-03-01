@@ -43,38 +43,56 @@ public class ArcadeDrive extends Command {
       driveTrain.leftLeader.set(controller.getRightX() * -1);
       driveTrain.rightLeader.set(controller.getRightX());
       driveTrain.leftLeader.set(controller.getRightX() >= 0.04 ? controller.getRightX() : 0);
+      driveTrain.leftLeader.feed();
+      driveTrain.rightLeader.feed();
       } else if (controller.getRightX() < 0.04){ // Going Right
         driveTrain.leftLeader.set(controller.getRightX());
         driveTrain.rightLeader.set(controller.getRightX() * -1);
         driveTrain.leftLeader.set(controller.getRightX() >= 0.04 ? controller.getRightX() : 0);
+        driveTrain.leftLeader.feed();
+        driveTrain.rightLeader.feed();
       }
     } else if (controller.getRightX() == 0.04){ // No Right/Left
       driveTrain.leftLeader.set(controller.getLeftY() * -1);
       driveTrain.rightLeader.set(controller.getLeftY() * -1);
+      driveTrain.leftLeader.feed();
+      driveTrain.rightLeader.feed();
     } else if (controller.getLeftY() < 0.04 && controller.getRightX() > 0.04){ // Forward and Right
       double Ymed = Math.abs(controller.getLeftY())/0.4;
       double Yfin = controller.getLeftY() - Ymed;
+      System.out.println(Yfin);
       driveTrain.rightLeader.set((controller.getRightX() * -1) + Yfin);
       driveTrain.leftLeader.set(controller.getRightX());
       driveTrain.leftLeader.set(controller.getRightX() >= 0.04 ? controller.getRightX() : 0);
+      driveTrain.leftLeader.feed();
+      driveTrain.rightLeader.feed();
     } else if (controller.getLeftY() > 0.04 && controller.getRightX() > 0.04){ // Backward and right
       double Ymed = Math.abs(controller.getLeftY())/0.4;
-      double Yfin = controller.getLeftY() - Ymed;     
+      double Yfin = controller.getLeftY() - Ymed;  
+      System.out.println(Yfin);   
       driveTrain.leftLeader.set(controller.getRightX() + Yfin);
       driveTrain.rightLeader.set(controller.getRightX() * -1);
       driveTrain.leftLeader.set(controller.getRightX() >= 0.04 ? controller.getRightX() : 0);
+      driveTrain.leftLeader.feed();
+      driveTrain.rightLeader.feed();
     } else if (controller.getLeftY() < 0.04 && controller.getLeftX() < 0.04){ //Forward and left
       double Ymed = Math.abs(controller.getLeftY())/0.4;
-      double Yfin = controller.getLeftY() - Ymed;     
+      double Yfin = controller.getLeftY() - Ymed;
+      System.out.println(Yfin);     
       driveTrain.rightLeader.set((controller.getRightX()) + Yfin);
       driveTrain.leftLeader.set(controller.getRightX() * -1);
       driveTrain.leftLeader.set(controller.getRightX() >= 0.04 ? controller.getRightX() : 0);
+      driveTrain.leftLeader.feed();
+      driveTrain.rightLeader.feed();
     } else if (controller.getLeftY() > 0.04 && controller.getRightX() < 0.04){ //Backward and Left
       double Ymed = Math.abs(controller.getLeftY())/0.4;
-      double Yfin = controller.getLeftY() - Ymed;     
+      double Yfin = controller.getLeftY() - Ymed;
+      System.out.println(Yfin);     
       driveTrain.leftLeader.set((controller.getRightX() * -1) + Yfin);
       driveTrain.rightLeader.set(controller.getRightX());
       driveTrain.leftLeader.set(controller.getRightX() >= 0.04 ? controller.getRightX() : 0);
+      driveTrain.leftLeader.feed();
+      driveTrain.rightLeader.feed();
     }
   }
 
