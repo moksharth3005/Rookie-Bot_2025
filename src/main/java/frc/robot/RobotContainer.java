@@ -20,6 +20,7 @@ import frc.robot.commands.RollerCommand;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANRollerSubsystem;
 //import frc.robot.subsystems.CoralShooter;
+import frc.robot.subsystems.CoralShooter;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -34,6 +35,7 @@ public class RobotContainer {
   // The robot's subsystems
   private final CANDriveSubsystem driveSubsystem = new CANDriveSubsystem();
   private final CANRollerSubsystem rollerSubsystem = new CANRollerSubsystem();
+  private final CoralShooter shooterSubsystem = new CoralShooter();
 
   // The driver's controller
   private final CommandXboxController driverController = new CommandXboxController(

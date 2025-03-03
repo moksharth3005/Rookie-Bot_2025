@@ -13,8 +13,8 @@ import frc.robot.subsystems.CANDriveSubsystem;
 public class ArcadeDrive extends Command {
   private CANDriveSubsystem driveTrain = null;
   private XboxController controller = null;
-  private DutyCycleEncoder Encoder_Rightleader = null;
-  private DutyCycleEncoder Encoder_Leftleader = null;
+  public DutyCycleEncoder Encoder_Rightleader = null;
+  public DutyCycleEncoder Encoder_Leftleader = null;
 
   /** Creates a new ArcadeDrive. */
   public ArcadeDrive(CANDriveSubsystem driveTrain, XboxController controller, DutyCycleEncoder Encoder_Rightleader, DutyCycleEncoder Encoder_Leftleader) {
@@ -93,7 +93,7 @@ public class ArcadeDrive extends Command {
       driveTrain.leftLeader.set(controller.getRightX() >= 0.04 ? controller.getRightX() : 0);
       driveTrain.leftLeader.feed();
       driveTrain.rightLeader.feed();
-    }
+    } 
   }
 
   // Called once the command ends or is interrupted.
