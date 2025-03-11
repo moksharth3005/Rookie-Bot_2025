@@ -12,14 +12,14 @@ import frc.robot.subsystems.CoralShooter;
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class CenterAutonomous extends Command {
   /** Creates a new CenterAutonomous. */
-  private ArcadeDrive leftEncoder = null;
-  private ArcadeDrive rightEncoder = null;
+  private CANDriveSubsystem RightEncoder = null;
+  private CANDriveSubsystem LeftEncoder = null;
   private CANDriveSubsystem leftMotor = null;
   private CANDriveSubsystem rightMotor = null;
   private CoralShooter Shooter = null;
-  public CenterAutonomous(ArcadeDrive leftEncoder, ArcadeDrive rightEncoder, CANDriveSubsystem leftMotor, CANDriveSubsystem rightMotor, CoralShooter Shooter) {
-    this.leftEncoder = leftEncoder;
-    this.rightEncoder = rightEncoder;
+  public CenterAutonomous(CANDriveSubsystem leftMotor, CANDriveSubsystem rightMotor, CoralShooter Shooter, CANDriveSubsystem LeftEncoder, CANDriveSubsystem RightEncoder) {
+    this.LeftEncoder = LeftEncoder;
+    this.RightEncoder = RightEncoder;
     this.leftMotor = leftMotor;
     this.rightMotor = rightMotor; 
     this.Shooter = Shooter;
@@ -35,8 +35,8 @@ public class CenterAutonomous extends Command {
   @Override
   public void execute() {
     double Circumfearnce = 3.141592 * 3 * 2;
-    double LeftDistanceTraveled = Circumfearnce * leftEncoder.Encoder_Leftleader.get();
-    double RightDistanceTraveled = Circumfearnce * rightEncoder.Encoder_Rightleader.get();
+    double LeftDistanceTraveled = Circumfearnce * LeftEncoder.LeftEncoder.get();
+    double RightDistanceTraveled = Circumfearnce * RightEncoder.RightEncoder.get();
     while (LeftDistanceTraveled <= 72 && RightDistanceTraveled <= 72){
       leftMotor.leftLeader.set(0.5);
       rightMotor.rightLeader.set(0.5);

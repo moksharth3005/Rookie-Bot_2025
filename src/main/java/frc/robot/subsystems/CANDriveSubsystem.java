@@ -6,6 +6,8 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
@@ -16,6 +18,8 @@ public class CANDriveSubsystem extends SubsystemBase {
   public WPI_TalonSRX leftFollower = new WPI_TalonSRX(DriveConstants.LEFT_FOLLOWER_ID);
   public WPI_TalonSRX rightLeader = new WPI_TalonSRX(DriveConstants.RIGHT_LEADER_ID);
   public WPI_TalonSRX rightFollower = new WPI_TalonSRX(DriveConstants.RIGHT_FOLLOWER_ID);
+  public DutyCycleEncoder RightEncoder = new DutyCycleEncoder(0);
+  public DutyCycleEncoder LeftEncoder = new DutyCycleEncoder(0);
   public final DifferentialDrive drive;
   public CANDriveSubsystem() {
     // create brushed motors for drive
